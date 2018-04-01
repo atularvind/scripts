@@ -50,4 +50,5 @@ ws_url = /home/$OE_USER/ws
 mkdir $ws_url && cd $ws_url
 sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_VERSION
 
-alias 11='cd $ws_url/11.0/'
+alias 11='cd $ws_url/odoo/11.0/'
+alias hg='history | grep '
