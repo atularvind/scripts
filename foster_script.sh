@@ -1,7 +1,8 @@
 #!/bin/bash
 
-OE_USER="pro"
+OE_USER="iam"
 OE_VERSION="11.0"
+WS_URL="/home/$OE_USER/ws/odoo"
 WKHTMLTOX_X64=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 echo -e "\n---- Update Server ----"
@@ -46,9 +47,17 @@ sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
 
 
 echo -e "\n---- Creating Workspace ----"
-ws_url = /home/$OE_USER/ws
-mkdir $ws_url && cd $ws_url
-sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_VERSION
 
-alias 11='cd $ws_url/odoo/11.0/'
-alias hg='history | grep '
+mkdir -p $WS_URL && cd $WS_URL
+sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_VERSION
+sudo git clone --depth 1 --branch 10.0 https://www.github.com/odoo/odoo 10.0
+sudo git clone --depth 1 --branch 9.0 https://www.github.com/odoo/odoo 9.0
+sudo git clone --depth 1 --branch 8.0 https://www.github.com/odoo/odoo 8.0
+
+echo "alias 11='cd $WS_URL/11.0/'" >> ~/.bashrc
+echo "alias 10='cd $WS_URL/10.0/'" >> ~/.bashrc
+echo "alias 9='cd $WS_URL/9.0/'" >> ~/.bashrc
+echo "alias 8='cd $WS_URL/8.0/'" >> ~/.bashrc
+echo "alias hg='history | grep '" >> ~/.bashrc
+
+
