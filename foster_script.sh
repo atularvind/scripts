@@ -1,9 +1,9 @@
 #!/bin/bash
 
 OE_USER="iam"
-OE_VERSION="11.0"
+OE_VERSION="14.0"
 WS_URL="/home/$OE_USER/ws/odoo"
-WKHTMLTOX_X64=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+WKHTMLTOX_X64=https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb
 
 echo -e "\n---- Update Server ----"
 sudo apt-get update
@@ -19,7 +19,7 @@ sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 # Install Dependencies
 #--------------------------------------------------
 echo -e "\n--- Installing Python 3 + pip3 --"
-sudo apt-get install python3 python3-pip
+sudo apt-get install python3 python3-pip git -y
 
 echo -e "\n---- Install tool packages ----"
 sudo apt-get install wget git bzr python-pip gdebi-core -y
@@ -50,14 +50,14 @@ echo -e "\n---- Creating Workspace ----"
 
 mkdir -p $WS_URL && cd $WS_URL
 sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_VERSION
-sudo git clone --depth 1 --branch 10.0 https://www.github.com/odoo/odoo 10.0
-sudo git clone --depth 1 --branch 9.0 https://www.github.com/odoo/odoo 9.0
-sudo git clone --depth 1 --branch 8.0 https://www.github.com/odoo/odoo 8.0
+sudo git clone --depth 1 --branch 13.0 https://www.github.com/odoo/odoo 13.0
+sudo git clone --depth 1 --branch 12.0 https://www.github.com/odoo/odoo 12.0
+sudo git clone --depth 1 --branch 11.0 https://www.github.com/odoo/odoo 11.0
 
+echo "alias 14='cd $WS_URL/14.0/'" >> ~/.bashrc
+echo "alias 13='cd $WS_URL/13.0/'" >> ~/.bashrc
+echo "alias 12='cd $WS_URL/12.0/'" >> ~/.bashrc
 echo "alias 11='cd $WS_URL/11.0/'" >> ~/.bashrc
-echo "alias 10='cd $WS_URL/10.0/'" >> ~/.bashrc
-echo "alias 9='cd $WS_URL/9.0/'" >> ~/.bashrc
-echo "alias 8='cd $WS_URL/8.0/'" >> ~/.bashrc
 echo "alias hg='history | grep '" >> ~/.bashrc
 
 
