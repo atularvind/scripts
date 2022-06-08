@@ -3,7 +3,7 @@
 OE_USER="iam"
 OE_VERSION="14.0"
 WS_URL="/home/$OE_USER/ws/odoo"
-WKHTMLTOX_X64=https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb
+WKHTMLTOX_X64=https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
 
 echo -e "\n---- Update Server ----"
 sudo apt-get update
