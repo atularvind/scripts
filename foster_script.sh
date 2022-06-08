@@ -50,10 +50,12 @@ echo -e "\n---- Creating Workspace ----"
 
 mkdir -p $WS_URL && cd $WS_URL
 sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_VERSION
+sudo git clone --depth 1 --branch 15.0 https://www.github.com/odoo/odoo 15.0
 sudo git clone --depth 1 --branch 13.0 https://www.github.com/odoo/odoo 13.0
 sudo git clone --depth 1 --branch 12.0 https://www.github.com/odoo/odoo 12.0
 sudo git clone --depth 1 --branch 11.0 https://www.github.com/odoo/odoo 11.0
 
+echo "alias 15='cd $WS_URL/15.0/'" >> ~/.bashrc
 echo "alias 14='cd $WS_URL/14.0/'" >> ~/.bashrc
 echo "alias 13='cd $WS_URL/13.0/'" >> ~/.bashrc
 echo "alias 12='cd $WS_URL/12.0/'" >> ~/.bashrc
