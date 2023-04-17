@@ -61,5 +61,6 @@ echo "alias 13='cd $WS_URL/13.0/'" >> ~/.bashrc
 echo "alias 12='cd $WS_URL/12.0/'" >> ~/.bashrc
 echo "alias 11='cd $WS_URL/11.0/'" >> ~/.bashrc
 echo "alias hg='history | grep '" >> ~/.bashrc
+source ~/.bashrc
 
 
